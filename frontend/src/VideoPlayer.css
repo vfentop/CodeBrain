@@ -1,0 +1,168 @@
+/* 整体页面布局 */
+.video-page-layout {
+  display: flex;
+  gap: 20px; /* 两栏之间的间距 */
+  padding: 20px; /* 页面内边距，可以根据需要调整 */
+  max-width: 1280px; /* 限制页面最大宽度 */
+  margin: 0 auto; /* 页面居中 */
+}
+
+/* 左侧主栏 */
+.main-column {
+  flex: 2; /* 占据可用空间的 2 份 */
+  min-width: 0; /* 防止内容溢出时 flex item 不缩小 */
+}
+
+/* 右侧相关视频栏 */
+.related-column {
+  flex: 1; /* 占据可用空间的 1 份 */
+  min-width: 0;
+  max-width: 400px; /* 可以限制相关视频栏的最大宽度 */
+}
+
+.related-column h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.related-videos-placeholder {
+  border: 1px dashed #ccc;
+  padding: 15px;
+  background-color: #f9f9f9;
+  min-height: 300px;
+  color: #777;
+}
+
+
+/* 视频播放器容器 (从之前的样式移过来，并调整) */
+.video-player-container {
+  /* max-width: 960px; */ /* 不再需要，由 main-column 控制宽度 */
+  /* margin: 0 auto; */ /* 不再需要 */
+  margin-bottom: 20px; /* 与评论区保持间距 */
+}
+
+.video-placeholder {
+  width: 100%; /* 宽度占满 main-column */
+  aspect-ratio: 16 / 9; /* 保持 16:9 的宽高比 */
+  min-height: auto; /* 移除之前的 min-height */
+  border: 1px solid #ddd;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.video-title { /* 新增标题样式 */
+    font-size: 1.4em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.video-info {
+  margin-bottom: 20px;
+}
+
+.video-info p {
+  margin: 5px 0;
+  color: #333;
+  font-size: 0.9em; /* 调整字体大小 */
+}
+
+.video-info strong {
+    margin-right: 5px;
+}
+
+.video-info hr {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+/* 加载/错误/信息提示样式 */
+.loading-message, .error-message, .info-message {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.error-message {
+    color: #d9534f; /* 红色表示错误 */
+}
+
+
+/* 实际视频播放器样式 */
+.video-element {
+  display: block; /* 确保是块级元素 */
+  background-color: #000; /* 视频未加载时的背景色 */
+  aspect-ratio: 16 / 9; /* 保持比例 */
+  margin-bottom: 15px; /* 与下方标题的间距 */
+}
+
+/* 移除相关视频占位符样式 */
+/* .related-videos-placeholder { ... } */
+
+/* 相关视频列表容器 */
+.related-videos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 视频项之间的间距 */
+}
+
+/* 相关视频项链接 */
+.related-video-item-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* 使链接占据整个区域 */
+}
+
+/* 单个相关视频项 */
+.related-video-item {
+  display: flex;
+  gap: 10px; /* 缩略图和信息之间的间距 */
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden; /* 防止内容溢出 */
+  transition: background-color 0.2s ease;
+}
+
+.related-video-item:hover {
+  background-color: #f0f0f0; /* 悬停效果 */
+}
+
+/* 相关视频缩略图 */
+.related-video-thumbnail {
+  width: 120px; /* 固定宽度 */
+  height: 68px; /* 根据 16:9 计算的高度 */
+  object-fit: cover; /* 保持图片比例并裁剪 */
+  background-color: #eee; /* 图片加载时的占位背景 */
+  flex-shrink: 0; /* 防止缩略图被压缩 */
+}
+
+/* 相关视频信息 */
+.related-video-info {
+  flex-grow: 1;
+  min-width: 0; /* 防止文字溢出 */
+}
+
+.related-video-info h4 {
+  font-size: 0.9em;
+  margin: 0 0 4px 0;
+  /* 处理长标题 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.related-video-info p {
+  font-size: 0.8em;
+  color: #555;
+  margin: 0;
+  /* 处理长文字 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

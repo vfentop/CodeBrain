@@ -1,0 +1,107 @@
+.App {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 创建网格布局 */
+  gap: 20px; /* 网格间距 */
+}
+
+.video-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.video-item h3 {
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.video-item p {
+  font-size: 0.8em;
+  color: #555;
+  margin: 0;
+}
+
+/* 移除默认的 React logo 样式 (如果还存在) */
+.main-content {
+  padding-top: 76px; /* Navbar 高度 (56px) + 一些间距 (20px) */
+  padding-left: 20px; /* 保持左右内边距 */
+  padding-right: 20px;
+}
+
+/* 移除或注释掉旧的 .main-content padding-top */
+/* .main-content {
+  padding-top: 76px;
+  padding-left: 20px;
+  padding-right: 20px;
+} */
+
+/* 新增 app-body 布局 */
+.app-body {
+  display: flex;
+  margin-top: 56px; /* Navbar 高度 */
+}
+
+/* 调整 main-content 样式 */
+.main-content {
+  flex-grow: 1; /* 占据剩余空间 */
+  padding: 20px; /* 内边距 */
+  margin-left: 240px; /* 为侧边栏留出空间 */
+  box-sizing: border-box;
+  /* 移除 padding-top，因为 app-body 已经处理了 Navbar 的高度 */
+}
+
+/* 确保 video-list 在 main-content 内部正确显示 */
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.video-item-link {
+  text-decoration: none; /* 移除下划线 */
+  color: inherit; /* 继承父元素的颜色 */
+  display: block; /* 使链接占据整个卡片区域 */
+}
+
+.video-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  height: 100%; /* 让卡片高度一致 (如果需要) */
+  box-sizing: border-box;
+  transition: box-shadow 0.2s ease-in-out; /* 添加悬停效果 */
+}
+
+.video-item:hover {
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 悬停时添加阴影 */
+}
+
+.video-item h3 {
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.video-item p {
+  font-size: 0.8em;
+  color: #555;
+  margin: 0;
+}
+
+/* 移除默认的 React logo 样式 (如果还存在) */
+/* 移除 App-logo 样式 */
+.App-logo {
+  display: none;
+}
+  /* display: none; */ /* 或者直接删除相关样式 */
+/* 删除多余的右花括号 */
+
+/* 移除 App-header 样式 */
+ /* display: none; */ /* 或者直接删除相关样式 */
+/* 删除多余的右花括号，因为没有对应的选择器或@规则 */

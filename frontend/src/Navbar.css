@@ -1,0 +1,66 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff; /* 白色背景 */
+  border-bottom: 1px solid #ddd; /* 底部边框 */
+  position: sticky; /* 固定在顶部 */
+  top: 0;
+  z-index: 1000; /* 确保在其他内容之上 */
+  height: 56px; /* 固定高度 */
+  box-sizing: border-box;
+}
+
+.navbar-left, .navbar-center, .navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ff0000; /* 类似 YouTube 的红色 */
+  cursor: pointer;
+  margin-left: 15px; /* 左边距 */
+}
+
+.navbar-center {
+  flex-grow: 1; /* 占据中间剩余空间 */
+  justify-content: center; /* 居中 */
+  max-width: 600px; /* 限制最大宽度 */
+  margin: 0 20px; /* 左右边距 */
+}
+
+.search-input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-right: none; /* 移除右边框，与按钮合并 */
+  border-radius: 20px 0 0 20px; /* 左侧圆角 */
+  width: 100%; /* 占据父容器宽度 */
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.search-button {
+  padding: 0 15px;
+  height: 36px;
+  border: 1px solid #ccc;
+  border-left: none; /* 移除左边框 */
+  background-color: #f8f8f8; /* 浅灰色背景 */
+  border-radius: 0 20px 20px 0; /* 右侧圆角 */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button:hover {
+  background-color: #f0f0f0;
+}
+
+.user-icon {
+  font-size: 1.5em;
+  cursor: pointer;
+  margin-right: 15px; /* 右边距 */
+}
