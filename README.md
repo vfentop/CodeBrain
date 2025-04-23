@@ -1,6 +1,6 @@
 # MyTube Clone - 视频分享平台
 
-这是一个使用 MERN 技术栈（简化版，这里是 React + Node.js/Express）构建的简单视频分享平台，旨在模仿 YouTube 的核心功能。
+这是一个使用 MERN 技术栈（简化版，这里是 React + Node.js/Express）构建的简单视频分享平台。
 
 ## ✨ 功能特性
 
