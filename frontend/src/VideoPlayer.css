@@ -166,3 +166,148 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.video-player-page {
+  display: flex;
+  padding: 20px;
+  gap: 24px; /* 主内容区和相关视频区的间距 */
+  background-color: #f9f9f9; /* 页面背景色 */
+}
+
+.main-content-area {
+  flex: 3; /* 主内容区占据更大比例 */
+  display: flex;
+  flex-direction: column;
+}
+
+.related-videos-area {
+  flex: 1; /* 相关视频区占据较小比例 */
+}
+
+.video-container {
+  width: 100%;
+  background-color: #000; /* 视频背景 */
+  margin-bottom: 16px; /* 视频和下方信息的间距 */
+}
+
+.video-element {
+  width: 100%;
+  display: block; /* 移除 video 元素下方可能的空白 */
+  aspect-ratio: 16 / 9; /* 保持 16:9 比例 */
+}
+
+/* --- 视频信息区域样式 --- */
+.video-info-section {
+  padding: 0 0 16px 0; /* 底部留白 */
+}
+
+.video-title {
+  font-size: 1.4em; /* 稍大字体 */
+  font-weight: 500;
+  margin: 0 0 8px 0; /* 调整间距 */
+  line-height: 1.4;
+}
+
+.video-metadata {
+  font-size: 0.9em;
+  color: #606060;
+  margin-bottom: 12px;
+}
+
+.video-metadata span {
+  margin-right: 8px; /* 元素间距 */
+}
+
+.info-separator {
+  border: none;
+  height: 1px;
+  background-color: #e0e0e0; /* 分隔线颜色 */
+  margin: 16px 0; /* 上下间距 */
+}
+
+.uploader-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.uploader-name {
+  font-weight: 500;
+  color: #030303;
+}
+
+.video-description {
+  font-size: 0.95em;
+  line-height: 1.5;
+  color: #333;
+  white-space: pre-wrap; /* 保留描述中的换行 */
+  margin-top: 12px; /* 与上方元素的间距 */
+}
+
+/* --- 相关视频区域样式 (可以进一步美化) --- */
+.related-videos-area h2 {
+  font-size: 1.1em;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.related-video-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* 使链接占据整个区域 */
+  margin-bottom: 12px; /* 相关视频项之间的间距 */
+}
+
+.related-video-item {
+  display: flex;
+  gap: 10px; /* 图片和文字的间距 */
+  cursor: pointer;
+}
+
+.related-video-thumbnail {
+  width: 120px; /* 固定缩略图宽度 */
+  height: 68px; /* 根据 16:9 计算高度 */
+  object-fit: cover;
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+.related-video-info {
+  flex: 1;
+}
+
+.related-video-title {
+  font-size: 0.9em;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+  /* 最多显示两行 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; /* 标准属性，提供更好的浏览器兼容性 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.related-video-uploader,
+.related-video-stats {
+  font-size: 0.8em;
+  color: #606060;
+  margin: 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 加载和错误消息样式 */
+.loading-message, .error-message {
+  padding: 40px;
+  text-align: center;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.error-message {
+  color: #d9534f;
+}

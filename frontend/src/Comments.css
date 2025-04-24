@@ -1,75 +1,137 @@
 .comments-section {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #eee; /* 分隔线 */
+  margin-top: 24px; /* 与上方视频信息的间距 */
+  border-top: 1px solid #e0e0e0; /* 顶部加一条分隔线 */
+  padding-top: 24px; /* 分隔线上方留白 */
 }
 
 .comments-section h3 {
-  margin-bottom: 15px;
+  font-size: 1.1em;
+  margin-bottom: 16px;
+  font-weight: 500;
 }
 
+/* --- 评论输入区 --- */
+.comment-input-area {
+  display: flex;
+  gap: 12px; /* 头像和输入框的间距 */
+  margin-bottom: 24px; /* 与评论列表的间距 */
+}
+
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc; /* 占位符颜色 */
+  flex-shrink: 0; /* 防止头像被压缩 */
+}
+.comment-avatar.placeholder::after { /* 简单的占位符人像 */
+  content: '👤';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 20px;
+  color: #fff;
+}
+
+
 .comment-form {
-  margin-bottom: 20px;
+  flex-grow: 1; /* 占据剩余空间 */
+  display: flex;
+  flex-direction: column;
 }
 
 .comment-form textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  resize: vertical; /* 允许垂直调整大小 */
+  padding: 8px 0; /* 调整内边距 */
+  border: none;
+  border-bottom: 1px solid #ccc; /* 底部边框 */
+  background-color: transparent; /* 透明背景 */
+  font-size: 0.95em;
+  line-height: 1.5;
+  resize: none; /* 禁止用户调整大小 */
+  outline: none; /* 移除默认的聚焦轮廓 */
+  transition: border-color 0.2s ease, height 0.2s ease; /* 平滑过渡 */
+  overflow-y: auto; /* 内容多时显示滚动条 */
 }
 
-.comment-form button {
-  padding: 8px 15px;
-  background-color: #065fd4; /* 蓝色按钮 */
+.comment-form textarea:focus {
+  border-bottom-color: #333; /* 聚焦时边框变深 */
+  border-bottom-width: 2px; /* 聚焦时边框变粗 */
+}
+
+.comment-actions {
+  display: flex;
+  justify-content: flex-end; /* 按钮靠右 */
+  align-items: center; /* 垂直居中 */
+  margin-top: 8px;
+}
+
+.comment-actions button {
+  padding: 8px 16px;
+  background-color: #065fd4; /* YouTube 蓝色 */
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 18px; /* 圆角按钮 */
   cursor: pointer;
-  float: right; /* 按钮右对齐 */
+  font-weight: 500;
+  transition: background-color 0.2s ease;
 }
 
-.comment-form button:hover {
-  background-color: #054cb0;
+.comment-actions button:hover {
+  background-color: #0552b8;
 }
 
-.comment-form button:disabled {
-  background-color: #ccc; /* 禁用按钮样式 */
+.comment-actions button:disabled {
+  background-color: #ccc;
   cursor: not-allowed;
 }
 
 .comment-error {
-  color: red;
-  font-size: 0.9em;
-  margin-top: 5px;
-  clear: both; /* 确保在按钮下方 */
+    color: #d9534f;
+    font-size: 0.85em;
+    margin-right: auto; /* 将错误信息推到左边 */
 }
 
-.comment-list {
-  margin-top: 10px; /* 与表单按钮保持距离 */
+
+/* --- 评论列表 --- */
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 评论项之间的间距 */
 }
 
 .comment-item {
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #f0f0f0; /* 评论间分隔线 */
+  display: flex;
+  gap: 12px; /* 头像和内容的间距 */
 }
 
-.comment-item:last-child {
-  border-bottom: none; /* 最后一个评论无下边框 */
+.comment-content {
+  flex-grow: 1;
 }
 
-.comment-item strong {
-  display: block;
-  margin-bottom: 5px;
+.comment-user {
+  font-weight: 500;
   font-size: 0.9em;
+  margin-right: 6px;
+  color: #030303;
 }
 
-.comment-item p {
-  margin: 0;
-  font-size: 1em;
-  line-height: 1.4;
+.comment-timestamp {
+  font-size: 0.8em;
+  color: #606060;
+}
+
+.comment-text {
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin: 4px 0 0 0; /* 调整与用户名的间距 */
+  color: #0f0f0f; /* 评论文字颜色 */
+  white-space: pre-wrap; /* 保留换行 */
+}
+
+/* 加载和空状态提示 */
+.comments-list p {
+  color: #606060;
+  font-size: 0.9em;
 }

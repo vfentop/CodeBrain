@@ -1,0 +1,30 @@
+.home-page {
+  padding: 20px;
+  /* 确保内容区域在 Sidebar 右侧开始 */
+  /* 这个 margin-left 需要根据你的 Sidebar 宽度调整 */
+  /* margin-left: 240px;  <-- 稍后在 App.css 中统一处理布局 */
+}
+
+.video-grid {
+  display: grid;
+  /* 根据需要调整列数和间距 */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px; /* 视频卡片之间的间距 */
+}
+
+.video-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 加载和错误消息样式 (可以复用 VideoPlayer.css 或定义新的) */
+.loading-message, .error-message {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.error-message {
+  color: #d9534f;
+}

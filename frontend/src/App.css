@@ -28,32 +28,39 @@
 }
 
 /* 移除默认的 React logo 样式 (如果还存在) */
-.main-content {
-  padding-top: 76px; /* Navbar 高度 (56px) + 一些间距 (20px) */
-  padding-left: 20px; /* 保持左右内边距 */
-  padding-right: 20px;
+/* 确保 App 占据整个视口高度 */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* 移除或注释掉旧的 .main-content padding-top */
-/* .main-content {
-  padding-top: 76px;
-  padding-left: 20px;
-  padding-right: 20px;
-} */
+/* Navbar 已经在其 CSS 中设置为 sticky */
 
-/* 新增 app-body 布局 */
+/* App 主体布局 (Sidebar + Main Content) */
 .app-body {
   display: flex;
-  margin-top: 56px; /* Navbar 高度 */
+  flex-grow: 1; /* 占据 Navbar 下方的剩余空间 */
+  /* Navbar 高度是 56px */
+  margin-top: 56px;
 }
 
-/* 调整 main-content 样式 */
+/* Sidebar 已经在其 CSS 中设置为 fixed 且有宽度 */
+
+/* 主内容区域 */
 .main-content {
-  flex-grow: 1; /* 占据剩余空间 */
-  padding: 20px; /* 内边距 */
-  margin-left: 240px; /* 为侧边栏留出空间 */
-  box-sizing: border-box;
-  /* 移除 padding-top，因为 app-body 已经处理了 Navbar 的高度 */
+  flex-grow: 1; /* 占据剩余宽度 */
+  /* 设置左边距，避免被 Sidebar 遮挡 */
+  /* Sidebar 宽度是 240px */
+  margin-left: 240px;
+  padding: 0; /* HomePage 内部已有 padding */
+  background-color: #f9f9f9; /* 可以设置一个背景色 */
+  overflow-y: auto; /* 如果内容超长，允许滚动 */
+}
+
+/* 可以在这里添加一些全局 body 样式，或者在 index.css 中 */
+body {
+  background-color: #f9f9f9; /* 设置页面背景色 */
 }
 
 /* 确保 video-list 在 main-content 内部正确显示 */

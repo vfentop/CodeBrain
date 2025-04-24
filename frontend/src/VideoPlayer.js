@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom'; // 导入 Link
-import Comments from './Comments';
+import { useParams, Link } from 'react-router-dom';
+import Comments from './Comments'; // 引入评论组件
 import './VideoPlayer.css'; // 引入样式
 
 function VideoPlayer() {
@@ -67,57 +67,66 @@ function VideoPlayer() {
   }
 
   return (
-    <div className="video-page-layout">
-      <div className="main-column">
-        <div className="video-player-container">
-          {/* 替换为实际的 video 标签 */}
-          <video
-            controls // 显示播放控件
-            src={videoDetails.videoUrl} // 使用后端提供的 URL (目前是占位符)
-            poster={`/thumbnails/video${videoDetails.id}.jpg`} // 假设有缩略图，路径需要对应
-            className="video-element" // 添加一个类名方便样式控制
-            width="100%" // 宽度占满容器
-          >
-            您的浏览器不支持 HTML5 video 标签。
-          </video>
-          <h2 className="video-title">{videoDetails.title}</h2>
-          <div className="video-info">
-            <p><strong>上传者:</strong> {videoDetails.uploader}</p>
-            <p>{videoDetails.views} • {videoDetails.uploaded}</p>
-            <hr />
-            <p><strong>描述:</strong></p>
-            <p>{videoDetails.description}</p>
-          </div>
-        </div>
-        <Comments videoId={videoId} />
+    <div className="video-player-page">
+      <div className="main-content-area"> {/* 主要内容区，包含播放器和信息 */}
+        {/* 条件渲染检查 videoDetails 而不是 video */}
+        {videoDetails && (
+          <>
+            <div className="video-container">
+              {/* 使用 videoDetails.videoUrl */}
+              <video controls src={videoDetails.videoUrl} className="video-element">
+                您的浏览器不支持 HTML5 video 标签。
+              </video>
+            </div>
+
+            {/* 视频信息区域 */}
+            <div className="video-info-section">
+              {/* 使用 videoDetails.title 等 */}
+              <h1 className="video-title">{videoDetails.title}</h1>
+              <div className="video-metadata">
+                <span>{videoDetails.views}</span>
+                <span>•</span>
+                <span>{videoDetails.uploaded}</span>
+              </div>
+              <hr className="info-separator" /> {/* 添加分隔线 */}
+              <div className="uploader-info">
+                {/* 这里可以放上传者头像等 */}
+                <span className="uploader-name">{videoDetails.uploader}</span>
+                {/* 可以添加订阅按钮等 */}
+              </div>
+              <div className="video-description">
+                <p>{videoDetails.description}</p>
+              </div>
+              <hr className="info-separator" /> {/* 添加分隔线 */}
+            </div>
+
+            {/* 评论区 */}
+            <Comments videoId={videoId} />
+          </>
+        )}
       </div>
 
-      <div className="related-column">
-        <h3>相关视频</h3>
-        {/* 移除占位符，渲染实际列表 */}
-        <div className="related-videos-list">
-          {relatedVideos.length > 0 ? (
-            relatedVideos.map(video => (
-              <Link to={`/watch/${video.id}`} key={video.id} className="related-video-item-link">
-                <div className="related-video-item">
-                  {/* 假设有缩略图 */}
-                  <img
-                    src={`/thumbnails/video${video.id}.jpg`} // 假设缩略图路径
-                    alt={video.title}
-                    className="related-video-thumbnail"
-                  />
-                  <div className="related-video-info">
-                    <h4>{video.title}</h4>
-                    <p>{video.uploader}</p>
-                    <p>{video.views} • {video.uploaded}</p>
-                  </div>
+      {/* 相关视频区域 */}
+      <div className="related-videos-area">
+        <h2>相关视频</h2>
+        {/* 这里使用 relatedVideos state */}
+        {relatedVideos && relatedVideos.length > 0 ? (
+          relatedVideos.map(relatedVideo => (
+            <Link to={`/watch/${relatedVideo.id}`} key={relatedVideo.id} className="related-video-link">
+              <div className="related-video-item">
+                {/* 假设也有缩略图 */}
+                <img src={`/thumbnails/video${relatedVideo.id}.jpg`} alt={relatedVideo.title} className="related-video-thumbnail" />
+                <div className="related-video-info">
+                  <h4 className="related-video-title">{relatedVideo.title}</h4>
+                  <p className="related-video-uploader">{relatedVideo.uploader}</p>
+                  <p className="related-video-stats">{relatedVideo.views}</p>
                 </div>
-              </Link>
-            ))
-          ) : (
-            <p>暂无相关视频。</p>
-          )}
-        </div>
+              </div>
+            </Link>
+          ))
+        ) : (
+          <p>没有相关视频。</p>
+        )}
       </div>
     </div>
   );
